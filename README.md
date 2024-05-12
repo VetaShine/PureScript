@@ -1,7 +1,7 @@
 # PureScript
 Functional programming language
 
-## 1. Типы данных и переменные
+## 1. Типы данных и переменных
 ### 1.1. Типы данных
 + числа
 + булевые значения: true (1) - истина, false (0) - ложь
@@ -44,14 +44,14 @@ Functional programming language
 ``` 
 #### Булевые выражения:
 + "&" (И) - логический оператор AND 
-+ "l" (ИЛИ) - логический оператор OR
++ "|" (ИЛИ) - логический оператор OR
 
 Примеры:
 ```
 (& false false) # Result: Bool false
 (& 1 0) # Result: Bool false
-(l 1 0) # Result: Bool true
-(& (& 1 0) (l false true)) # Result: Bool false
+(| 1 0) # Result: Bool true
+(& (& 1 0) (| false true)) # Result: Bool false
 ```
 
 ### 2.2. Управляющие операторы

@@ -1,0 +1,2 @@
+# PureScript
+Functional programming language

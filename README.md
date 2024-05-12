@@ -10,8 +10,8 @@ Functional programming language
 ### 1.2. Переменные
 Возможно создание как неименованных, так и именнованых переменных. Создание именнованой переменной: (let <название переменной> <значение переменной>). Пример: 
 ```
-(let per 56) # создание переменной с именем per, хранящей числовое значение, равное 56
-(let line "Hello") # создание переменной с именем per, хранящей строковое значение "Hello"
+(let per 56) # создание переменной с именем per, хранящей числовое значение, равное 56 #
+(let line "Hello") # создание переменной с именем per, хранящей строковое значение "Hello" #
 ```
 
 ## 2. Операторы языка
@@ -24,10 +24,10 @@ Functional programming language
 
 Примеры:
 ```
-(+ 2 5) # Result: Number 7.0
-(- 2 5) # Result: Number -3.0
-(* 2 5) # Result: Number 10.0
-(/ 2 5) # Result: Number 0.4
+(+ 2 5) # Result: Number 7.0 #
+(- 2 5) # Result: Number -3.0 #
+(* 2 5) # Result: Number 10.0 #
+(/ 2 5) # Result: Number 0.4 #
 ``` 
 #### Операторы сравнения:
 + "<" (меньше) - определяет, верно ли, что число x меньше y. Возвращает true или false.
@@ -36,22 +36,22 @@ Functional programming language
 
 Примеры:
 ```
-(< 2 5) # Result: Bool true
-(> 2 5) # Result: Bool false
-(= 2 5) # Result: Bool false
-(= true true) # Result: Bool true
-(= "st" "tr") # Result: Bool false
+(< 2 5) # Result: Bool true #
+(> 2 5) # Result: Bool false #
+(= 2 5) # Result: Bool false #
+(= true true) # Result: Bool true #
+(= "st" "tr") # Result: Bool false #
 ``` 
 #### Булевые выражения:
 + "&" (И) - логический оператор AND 
-+ "|" (ИЛИ) - логический оператор OR
++ "l" (ИЛИ) - логический оператор OR
 
 Примеры:
 ```
-(& false false) # Result: Bool false
-(& 1 0) # Result: Bool false
-(| 1 0) # Result: Bool true
-(& (& 1 0) (| false true)) # Result: Bool false
+(& false false) # Result: Bool false #
+(& 1 0) # Result: Bool false #
+(| 1 0) # Result: Bool true #
+(& (& 1 0) (| false true)) # Result: Bool false #
 ```
 
 ### 2.2. Управляющие операторы
@@ -60,7 +60,47 @@ Functional programming language
 
 Пример использования оператора:
 ```
-(if (= 5 7) then "true" else "false") # Result: String "false"
-(if (< -5 -1) then "true") # Result: String "true"
-(if (> -5 -1) then "true") # Result: Keys ""
+(if (= 5 7) then "true" else "false") # Result: String "false" #
+(if (< -5 -1) then "true") # Result: String "true" #
+(if (> -5 -1) then "true") # Result: Keys "" #
+```
+
+## 3. Функции
+### 3.1. Создание функций
+Функции определяются при помощи слова func. После этого слова указывается имя функции, за которым следует пара фигурных скобок, в которых можно указать аргументы функции (необязательно). Далее в круглых скобках следует блок команд, составляющих функцию. 
+
+Пример с передачей аргумента функции:
+```
+(func f1 {a} (
+  if (< a 100) then (* a 10) else (* a 9)
+))
+
+(f1 5) # Result: Number 50.0 #
+```
+Пример без передачи аргументов функции:
+```
+(func f2 {} (
+  "Hello world"
+))
+
+(f2) # Result: String "Hello world" #
+```
+### 3.2. Рекурсивные функции
+Любая функция может стать рекурсивной благодаря замыканиям. Пример:
+```
+(func f {a} (
+  if (< a 100) then (f1 (* a 10)) else (* a 9)
+))
+
+(f 5) # Result: Number 4500.0 #
+```
+
+## 4. Комментарии
+Комментарии в коде оформляются с помощью знака # в начале и в конце комментария. Пример: 
+```
+(func f1 {a} ( 
+  if (< a # hi # 100) then (* a 10) else (* a 9) 
+))
+# hello #
+(f1 5) # Result: Number 50.0 #
 ```

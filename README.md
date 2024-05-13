@@ -28,6 +28,7 @@ Functional programming language
 (- 2 5) # Result: Number -3.0 #
 (* 2 5) # Result: Number 10.0 #
 (/ 2 5) # Result: Number 0.4 #
+(/ (+ (* 7 4) (- 3 1)) 5) # Result: Number 6.0 #
 ``` 
 #### Операторы сравнения:
 + "<" (меньше) - определяет, верно ли, что число x меньше y. Возвращает true или false.
@@ -41,6 +42,7 @@ Functional programming language
 (= 2 5) # Result: Bool false #
 (= true true) # Result: Bool true #
 (= "st" "tr") # Result: Bool false #
+(= (= (> 2 7) (= "st" "tr")) (= (< -1 6.2) (= 67 67))) # Result: Bool true #
 ``` 
 #### Булевые выражения:
 + "&" (И) - логический оператор AND 
@@ -103,4 +105,47 @@ Functional programming language
 ))
 # hello #
 (f1 5) # Result: Number 50.0 #
+```
+
+## 5. Примеры программ 
+### Вычисление факториала числа 
+```
+(func factorial {n} (
+  (if (= n 0) then 1 else (* n (factorial (- n 1))))
+))
+
+(factorial 5) # Result: Number 120.0 #
+```
+### Возведение числа в степень
+```
+(func power {base exponent} (
+  if (= exponent 0) then 1 else (* base (power base (- exponent 1)))
+))
+
+(power 2 8) # Result: Number 256.0 #
+```
+
+### Проверка пароля (равенства двух строк)
+```
+(func password {line1 line2} (
+  if (= line1 line2) then "Пароль принят" else "Пароль не принят"
+))
+
+(password "12345" "12345") # Result: String "Пароль принят" #
+(password "password" "pasword") # Result: String "Пароль не принят" #
+```
+### Определение вида треугольника
+```
+(func triangle {a b c} (
+  (if (| (= c 0) (| (= a 0) (= b 0))) then "Ошибка данных")
+  (if (| (< c 0) (| (< a 0) (< b 0))) then "Ошибка данных")
+  (if (& (= a b) (= b c)) then "Равносторонний" else
+  (if (& (= false (= c b)) (& (= false (= a b)) (= false (= a c)))) then "Разносторонний" else "Равнобедренный"))
+))
+
+(triangle 145 145 139) # Result: String "Равнобедренный" #
+(triangle 59 59 59) # Result: String "Равносторонний" #
+(triangle 890 199 700) # Result: String "Разносторонний" #
+(triangle 0 145 139) # Result: String "Ошибка данных" #
+(triangle 145 145 -139) # Result: String "Ошибка данных" #
 ```
